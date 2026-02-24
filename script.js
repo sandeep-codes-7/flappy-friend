@@ -1,6 +1,6 @@
 let board;
-let boardWidth = 360;
-let boardHeight = 640;
+let boardWidth = 460;
+let boardHeight = 740;
 let context;
 
 let birdImg = new Image();
