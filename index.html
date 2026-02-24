@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>flappy friend</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
-</head>
-
-<body>
-    <canvas id="board"></canvas>
-</body>
-
+    <head>
+        <title>choose your character</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+        <script>
+            function chooseCharacter(character) {
+                localStorage.setItem('character', character);
+                window.location.href = 'index.html';
+            }
+        </script>
+    </head>
+    <body id="menu">
+        <h1 id="text">Choose Your Character</h1>
+        <div>
+            <button onclick="chooseCharacter('./images/chakri.png')"><img src="./images/chakri.png" alt="chakri" style="width: 100px; height: 100px;"></button>
+            <button onclick="chooseCharacter('./images/tiru.png')"><img src="./images/tiru.png" alt="tiru" style="width: 100px; height: 100px;"></button>
+            <button onclick="chooseCharacter('./images/ganesh.png')"><img src="./images/ganesh.png" alt="ganesh" style="width: 100px; height: 100px;"></button>
+            <button onclick="chooseCharacter('./images/harsha.png')"><img src="./images/harsha.png" alt="harsha" style="width: 100px; height: 100px;"></button>
+            <button onclick="chooseCharacter('./images/mani.png')"><img src="./images/mani.png" alt="mani" style="width: 100px; height: 100px;"></button>
+        </div>
+    </body>
 </html>
