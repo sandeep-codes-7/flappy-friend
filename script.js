@@ -10,6 +10,21 @@ let birdHeight = 50;
 let birdX = boardWidth / 8;
 let birdY = boardHeight / 2;
 
+const jumpSound = new Audio("./sounds/chakri_audio_ontap.wav");
+// const hitSound = new Audio("./sounds/hit.wav");
+const gameOverSound = new Audio("./sounds/chakri_audio_gameover.wav");
+
+// reduce delay on mobile
+jumpSound.preload = "auto";
+// hitSound.preload = "auto";
+gameOverSound.preload = "auto";
+
+function playSound(sound) {
+    sound.currentTime = 0;
+    sound.play().catch(() => {});
+}
+
+
 let bird = {
     height: birdHeight,
     width: birdWidth,
@@ -91,7 +106,10 @@ function update() {
             pipe.passed = true;
         }
 
-        if (detectCollision(bird, pipe)) gameOver = true;
+        if (detectCollision(bird, pipe)){
+            playSound(gameOverSound);
+            gameOver = true;
+        }
     }
 
     while (pipeArray.length > 0 && pipeArray[0].x < -pipeWidth) {
@@ -144,6 +162,7 @@ function handleKey(e) {
 
 // SHARED JUMP LOGIC (keyboard + mouse + touch)
 function jump() {
+    playSound(jumpSound);
     velocityY = -6;
 
     if (gameOver) {
